@@ -8,58 +8,58 @@
     padding: 16px;
     border-radius: 32px;
 
-    > div {
+    #chatbot > div {
         flex-grow: 1;
         overflow-y: scroll;
 
-        > div {
+        #chatbot > div > div {
             min-height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: end;
 
-            > div {
+            #chatbot > div > div > div {
                 display: inline-block;
                 padding: 8px;
                 border-radius: 10px;
                 overflow-wrap: anywhere;
 
-                &.chatbot-wait {
+                #chatbot > div > div > div.chatbot-wait {
                     background: #165c7d;
                     color: #FFFFFF;
                     align-self: start;
 
-                    > div > span {
+                    #chatbot > div > div > div.chatbot-wait > div > span {
                         display:inline-block;
                         animation: chatbot-wave 1.6s linear infinite;
 
-                        &:nth-child(2) {
+                        #chatbot > div > div > div.chatbot-wait > div > span:nth-child(2) {
                             animation-delay: -1.3s;
                         }
 
-                        &:nth-child(3) {
+                        #chatbot > div > div > div.chatbot-wait > div > span:nth-child(3) {
                             animation-delay: -1.0s;
                         }
                     }
                 }
 
-                &.chatbot-sent {
+                #chatbot > div > div > div.chatbot-sent {
                     background: #F7F7F7;
                     color: #000000;
                     align-self: end;
                 }
 
-                &.chatbot-response {
+                #chatbot > div > div > div.chatbot-response {
                     background: #165c7d;
                     color: #FFFFFF;
                     align-self: start;
                 }
 
-                & + div {
+                #chatbot > div > div > div + div {
                     margin-top: 16px;
                 }
 
-                > .chatbot-timestamp {
+                #chatbot > div > div > div > .chatbot-timestamp {
                     font-size: 50%;
                     text-align: right;
                     margin-top: 4px;
@@ -68,7 +68,7 @@
         }
     }
 
-    .chatbot-restart {
+    #chatbot .chatbot-restart {
         background: #FFFFFF;
         border: 1px solid #165c7d;
         padding: 8px;
@@ -81,16 +81,16 @@
         margin-top: 16px;
         transition: background-color 0.3s ease;
 
-    &:hover {
-      outline: 2px solid #165c7d
+        #chatbot .chatbot-restart:hover {
+            outline: 2px solid #165c7d
     }
     }
 
-    > form {
+    #chatbot > form {
         display: flex;
         padding-top: 16px;
 
-        > * {
+        #chatbot > form > * {
             box-sizing: border-box;
             height: 40px;
             outline: none;
@@ -99,24 +99,24 @@
             font-family: inherit;
             line-height: 1;
 
-            &[type=text] {
+            #chatbot > form > *[type=text] {
                 flex-grow: 1;
                 padding: 0 8px * 2;
                 color: #000000;
                 background: #FFFFFF;
                 border: 1px solid #165c7d;
 
-                &::placeholder {
+                #chatbot > form > *[type=text]::placeholder {
                     color: #9c9c9c;
                     text-align: center;
                 }
 
-                &:focus::placeholder {
+                #chatbot > form > *[type=text]:focus::placeholder {
                     opacity: 0;
                 }
             }
 
-            &[type=submit] {
+            #chatbot > form > *[type=submit] {
                 width: 40px;
                 margin-left: 4px;
                 background: #165c7d;
@@ -128,7 +128,7 @@
                 background-position: center center;
             }
 
-            &.chatbot-share {
+            #chatbot > form > *.chatbot-share {
                 width: 40px;
                 margin-left: 4px;
                 background: #165c7d;
