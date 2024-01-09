@@ -1,0 +1,180 @@
+$font-size: 16px;
+$background: #FFFFFF;
+$padding: 16px;
+$spacing: 16px;
+$curve: 32px;
+
+$bubble-padding: 8px;
+$bubble-spacing: 4px;
+$bubble-curve: 10px;
+
+$sent-bg: #F7F7F7;
+$sent-fg: #000000;
+
+$response-bg: #165c7d;
+$response-fg: #FFFFFF;
+
+$restart-fg: #C60000;
+
+$prompt-height: 40px;
+$prompt-bg: #FFFFFF;
+$prompt-fg: #000000;
+$prompt-placeholder-fg: #9c9c9c;
+$prompt-border: 1px solid #165c7d;
+$prompt-curve: 10px;
+$prompt-padding: 8px;
+
+#chatbot {
+    font-size: $font-size;
+    line-height: 1.2;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    background: $background;
+    padding: $padding;
+    border-radius: $curve;
+
+    > div {
+        flex-grow: 1;
+        overflow-y: scroll;
+
+        > div {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+
+            > div {
+                display: inline-block;
+                padding: $bubble-padding;
+                border-radius: $bubble-curve;
+                overflow-wrap: anywhere;
+
+                &.chatbot-wait {
+                    background: $response-bg;
+                    color: $response-fg;
+                    align-self: start;
+
+                    > div > span {
+                        display:inline-block;
+                        animation: chatbot-wave 1.6s linear infinite;
+
+                        &:nth-child(2) {
+                            animation-delay: -1.3s;
+                        }
+
+                        &:nth-child(3) {
+                            animation-delay: -1.0s;
+                        }
+                    }
+                }
+
+                &.chatbot-sent {
+                    background: $sent-bg;
+                    color: $sent-fg;
+                    align-self: end;
+                }
+
+                &.chatbot-response {
+                    background: $response-bg;
+                    color: $response-fg;
+                    align-self: start;
+                }
+
+                & + div {
+                    margin-top: $spacing;
+                }
+
+                > .chatbot-timestamp {
+                    font-size: 50%;
+                    text-align: right;
+                    margin-top: $bubble-spacing;
+                }
+            }
+        }
+    }
+
+    .chatbot-restart {
+        background: $response-fg;
+        border: $prompt-border;
+        padding: $prompt-padding;
+        border-radius: $prompt-curve;
+        font-size: $font-size;
+        color: $restart-fg;
+        cursor: pointer;
+        width: 100%;
+        height: $prompt-height;
+        margin-top: $spacing;
+        transition: background-color 0.3s ease;
+
+    &:hover {
+      outline: 2px solid $response-bg
+    }
+    }
+
+    > form {
+        display: flex;
+        padding-top: $spacing;
+
+        > * {
+            box-sizing: border-box;
+            height: $prompt-height;
+            outline: none;
+            border-radius: $prompt-height / 2;
+            font-size: $font-size;
+            font-family: inherit;
+            line-height: 1;
+
+            &[type=text] {
+                flex-grow: 1;
+                padding: 0 $prompt-padding * 2;
+                color: $prompt-fg;
+                background: $prompt-bg;
+                border: $prompt-border;
+
+                &::placeholder {
+                    color: $prompt-placeholder-fg;
+                    text-align: center;
+                }
+
+                &:focus::placeholder {
+                    opacity: 0;
+                }
+            }
+
+            &[type=submit] {
+                width: $prompt-height;
+                margin-left: $bubble-spacing;
+                background: $response-bg;
+                color: $response-fg;
+                border: none;
+                background-image: url("paper-plane-solid.svg");
+                background-size: $font-size;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            &.chatbot-share {
+                width: $prompt-height;
+                margin-left: $bubble-spacing;
+                background: $response-bg;
+                color: $response-fg;
+                border: none;
+                background-image: url("share-from-square.svg");
+                background-size: $font-size;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+        }
+    }
+}
+
+@keyframes chatbot-wave {
+	0%, 60%, 100% {
+		transform: initial;
+	}
+
+	30% {
+		transform: translateY(- $font-size / 2);
+	}
+}
